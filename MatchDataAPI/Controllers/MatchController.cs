@@ -9,6 +9,7 @@ using MatchDataAPI.Models;
 using Models;
 using DAL;
 using System.Web.Http.Cors;
+using System.Data;
 
 namespace MatchDataAPI.Controllers
 {
@@ -45,6 +46,32 @@ namespace MatchDataAPI.Controllers
                 res.error = "Exception occured: "+ex.Message.ToString();
                 return await Task.Run(() => Request.CreateResponse(HttpStatusCode.InternalServerError,res));
             }            
+        }
+
+        [HttpGet]
+        [Route("api/GetCountries")]
+        public async Task<HttpResponseMessage> GetCountries()
+        {
+            DataAccess objDa = new DataAccess();
+            List<CountryModel> listCountryModel = new List<CountryModel>();
+
+            try
+            {
+                listCountryModel = objDa.GetCountries();
+                if (listCountryModel != null)
+                {
+                    if (listCountryModel.Count > 0)
+                    {
+                        return await Task.Run(() => Request.CreateResponse(HttpStatusCode.OK, listCountryModel));
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return await Task.Run(() => Request.CreateResponse(HttpStatusCode.InternalServerError, listCountryModel));
+            }
+            return await Task.Run(() => Request.CreateResponse(HttpStatusCode.InternalServerError, listCountryModel));
         }
     }
 }

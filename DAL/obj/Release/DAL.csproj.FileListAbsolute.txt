@@ -1,0 +1,7 @@
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\bin\Release\DAL.dll
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\bin\Release\DAL.pdb
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\bin\Release\Models.dll
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\bin\Release\Models.pdb
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\obj\Release\DAL.dll
+D:\GitHub\WebAPI\api-MatchDataAPI\DAL\obj\Release\DAL.pdb

@@ -151,6 +151,54 @@ namespace DAL
             }
         }
 
+        public List<CountryModel> GetCountries()
+        {
+            List<CountryModel> listCountryModel = new List<CountryModel>();            
+
+            SqlConnection conn = new SqlConnection(connString);        
+            
+            try
+            {
+                SqlCommand cmd = new SqlCommand("GetCountries", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        CountryModel objCountry = new CountryModel();
+
+                        objCountry.id = Convert.ToInt32(rdr["id"]);
+                        objCountry.name = Convert.ToString(rdr["name"]);
+
+                        
+
+                        listCountryModel.Add(objCountry);
+                    }
+                } 
+
+                return listCountryModel;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally 
+            {
+                if(conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
 
     }
 }
